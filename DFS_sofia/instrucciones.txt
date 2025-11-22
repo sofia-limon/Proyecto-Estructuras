@@ -9,3 +9,9 @@ git commit -m "Descripcion breve"
 git push
 //cambios que he hecho
 git status
+
+opcion 2
+
+git checkout sofia
+git pull origin main
+//
