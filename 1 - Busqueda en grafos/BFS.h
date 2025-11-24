@@ -1,5 +1,4 @@
 #pragma once
 #include "Graph.h"
 
-void startDFS(Graph& g);
-
+void startBFS(Graph& g);
