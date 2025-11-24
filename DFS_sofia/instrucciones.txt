@@ -1,0 +1,17 @@
+paso 1
+git checkout main
+git pull //actualiza lo q hizo dember
+//vas a mi branch
+git checkout sofia
+git add .
+//lo que haya cambiado se añade a mi rama
+git commit -m "Descripcion breve"
+git push
+//cambios que he hecho
+git status
+
+opcion 2
+
+git checkout sofia
+git pull origin main
+//
