@@ -14,6 +14,7 @@ void mult(vector<vector<long long>>& res, vector<vector<long long>>& mat, int &n
             }
         }
     }
+    res=x;
 }
 
 void expbin(vector<vector<long long>>& mat, int& n, int k){
@@ -37,8 +38,6 @@ void startExpBin(Graph &g){
             mat[x][e.to]=min(mat[x][e.to], e.weight);
         }
     }
-
-    for(int i=0; i<g.n; i++)mat[i][i]=0;
 
     int n=g.n, k;
     cout<<"Ingresa el tamano del camino: ";

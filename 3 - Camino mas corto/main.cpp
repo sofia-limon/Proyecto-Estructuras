@@ -40,138 +40,256 @@ int main(){
 
 /*
 # Grafo 1:
-7 10
-0 1
-0 2
-2 1
-2 4
-1 5
-5 0
-6 4
-1 0
-1 1
-0 1
-
-DFS: 0 3
-No se puede alcanzar el nodo 3 desde el nodo 0.
-Los nodos alcanzados desde 0 son:
-0 1 2 4 5
-BFS: 5 1
-La distancia entre 5 y 1 es de 2
-La distancia de los nodos alcanzados desde 5 son:
-5->0=1
-5->1=2
-5->2=2
-5->4=3
-5->5=0
-Backtracking: 5 1
-Hay 3 maneras de ir desde 5 hasta 1.
-El camino mas corto es:
-5->0->1.
-El camino mas largo es:
-5->0->2->1.
-
-# Grafo 2:
-15 22
-0 3
-0 4
-1 0
-1 3
-1 14
-2 1
-2 10 
-2 12
-3 1
-3 4
-3 10
-4 5
-5 0
-8 10
-9 10
-10 7
-10 11
-10 12
-11 14
-12 13
-13 12
-14 2
-
-DFS: 8 0
-Los nodos alcanzados desde 8 son:
-0 1 2 3 4 5 7 8 10 11 12 13 14
-
-BFS: 10 6 
-No se puede alcanzar el nodo 6 desde el nodo 10.
-La distancia de los nodos alcanzados desde 10 son:
-10->0=5
-10->1=4
-10->2=3
-10->3=5
-10->4=6
-10->5=7
-10->7=1
-10->10=0
-10->11=1
-10->12=1
-10->13=2
-10->14=2
-
-Backtracking: 0 13
-Hay 4 maneras de ir desde 0 hasta 13.
-El camino mas corto es:
-0->3->10->12->13.
-El camino mas largo es:
-0->3->1->14->2->10->12->13.
-*/
-
-/*
-5 6 
-1 2 1
-1 5 1 
-2 3 1
-3 4 1
-4 5 1
-1 4 1
-*/
-
-/*
 15 16 
-1 2 1
-2 3 1 
+0 1 1
+1 2 1 
+2 3 1
 3 4 1
 4 5 1
 5 6 1
 6 7 1
 7 8 1
 8 9 1
-9 10 1
-1 10 11
-1 11 2
-1 12 3
-11 13 2 
-12 14 1
-13 15 2
-14 15 1
-*/
+0 9 11
+0 10 2
+0 11 3
+10 12 2 
+11 13 1
+12 14 2
+13 14 1
 
-/*
-9 18
-1 2 3 
-1 3 2 
-2 4 4 
-2 5 5 
-3 2 2 
-3 5 6 
-3 7 8
-4 6 3 
-4 9 11
-4 7 3 
-5 7 1 
-5 1 10
-6 1 5 
-7 6 4 
-8 7 5 
-8 9 4 
-9 5 6 
-9 6 4
+Dijkstra: 0 14
+hijos de 0:
+0 1 10 11
+distancia de 0 a 1: 1
+hijos de 1:
+2
+distancia de 0 a 2: 2
+hijos de 2:
+3
+distancia de 0 a 3: 3
+hijos de 3:
+4
+distancia de 0 a 4: 4
+hijos de 4:
+5
+distancia de 0 a 5: 5
+hijos de 5:
+6
+distancia de 0 a 6: 6
+hijos de 6:
+7
+distancia de 0 a 7: 7
+hijos de 7:
+8
+distancia de 0 a 8: 8
+hijos de 8:
+9
+distancia de 0 a 9: 9
+hijos de 9:
+
+distancia de 0 a 10: 2
+hijos de 10:
+12
+distancia de 0 a 11: 3
+hijos de 11:
+13
+distancia de 0 a 12: 4
+hijos de 12:
+
+distancia de 0 a 13: 4
+hijos de 13:
+14
+distancia de 0 a 14: 5
+hijos de 14:
+
+# Grafo 2:
+5 6 
+0 1 1
+1 2 1 
+2 0 1
+0 3 1
+3 4 1
+1 4 1
+
+Floyd:
+El camino mas corto desde 0 a 0 tiene peso 0
+El camino mas corto desde 0 a 1 tiene peso 1
+El camino mas corto desde 0 a 2 tiene peso 2
+El camino mas corto desde 0 a 3 tiene peso 1
+El camino mas corto desde 0 a 4 tiene peso 2
+El camino mas corto desde 1 a 0 tiene peso 2
+El camino mas corto desde 1 a 1 tiene peso 0
+El camino mas corto desde 1 a 2 tiene peso 1
+El camino mas corto desde 1 a 3 tiene peso 3
+El camino mas corto desde 1 a 4 tiene peso 1
+El camino mas corto desde 2 a 0 tiene peso 1
+El camino mas corto desde 2 a 1 tiene peso 2
+El camino mas corto desde 2 a 2 tiene peso 0
+El camino mas corto desde 2 a 3 tiene peso 2
+El camino mas corto desde 2 a 4 tiene peso 3
+No hay camino de 3 a 0
+No hay camino de 3 a 1
+No hay camino de 3 a 2
+El camino mas corto desde 3 a 3 tiene peso 0
+El camino mas corto desde 3 a 4 tiene peso 1
+No hay camino de 4 a 0
+No hay camino de 4 a 1
+No hay camino de 4 a 2
+No hay camino de 4 a 3
+El camino mas corto desde 4 a 4 tiene peso 0
+
+DP: 
+El camino mas corto desde 0 a 0 pasando por 0 aristas tiene peso 0
+No hay camino de 0 a 0 con 1aristas
+No hay camino de 0 a 0 con 2aristas
+El camino mas corto desde 0 a 0 pasando por 3 aristas tiene peso 3
+No hay camino de 0 a 0 con 4aristas
+No hay camino de 0 a 1 con 0aristas
+El camino mas corto desde 0 a 1 pasando por 1 aristas tiene peso 1
+No hay camino de 0 a 1 con 2aristas
+No hay camino de 0 a 1 con 3aristas
+El camino mas corto desde 0 a 1 pasando por 4 aristas tiene peso 4
+No hay camino de 0 a 2 con 0aristas
+No hay camino de 0 a 2 con 1aristas
+El camino mas corto desde 0 a 2 pasando por 2 aristas tiene peso 2
+No hay camino de 0 a 2 con 3aristas
+No hay camino de 0 a 2 con 4aristas
+No hay camino de 0 a 3 con 0aristas
+El camino mas corto desde 0 a 3 pasando por 1 aristas tiene peso 1
+No hay camino de 0 a 3 con 2aristas
+No hay camino de 0 a 3 con 3aristas
+El camino mas corto desde 0 a 3 pasando por 4 aristas tiene peso 4
+No hay camino de 0 a 4 con 0aristas
+No hay camino de 0 a 4 con 1aristas
+El camino mas corto desde 0 a 4 pasando por 2 aristas tiene peso 2
+No hay camino de 0 a 4 con 3aristas
+No hay camino de 0 a 4 con 4aristas
+No hay camino de 1 a 0 con 0aristas
+No hay camino de 1 a 0 con 1aristas
+El camino mas corto desde 1 a 0 pasando por 2 aristas tiene peso 2
+No hay camino de 1 a 0 con 3aristas
+No hay camino de 1 a 0 con 4aristas
+El camino mas corto desde 1 a 1 pasando por 0 aristas tiene peso 0
+No hay camino de 1 a 1 con 1aristas
+No hay camino de 1 a 1 con 2aristas
+El camino mas corto desde 1 a 1 pasando por 3 aristas tiene peso 3
+No hay camino de 1 a 1 con 4aristas
+No hay camino de 1 a 2 con 0aristas
+El camino mas corto desde 1 a 2 pasando por 1 aristas tiene peso 1
+No hay camino de 1 a 2 con 2aristas
+No hay camino de 1 a 2 con 3aristas
+El camino mas corto desde 1 a 2 pasando por 4 aristas tiene peso 4
+No hay camino de 1 a 3 con 0aristas
+No hay camino de 1 a 3 con 1aristas
+No hay camino de 1 a 3 con 2aristas
+El camino mas corto desde 1 a 3 pasando por 3 aristas tiene peso 3
+No hay camino de 1 a 3 con 4aristas
+No hay camino de 1 a 4 con 0aristas
+El camino mas corto desde 1 a 4 pasando por 1 aristas tiene peso 1
+No hay camino de 1 a 4 con 2aristas
+No hay camino de 1 a 4 con 3aristas
+El camino mas corto desde 1 a 4 pasando por 4 aristas tiene peso 4
+No hay camino de 2 a 0 con 0aristas
+El camino mas corto desde 2 a 0 pasando por 1 aristas tiene peso 1
+No hay camino de 2 a 0 con 2aristas
+No hay camino de 2 a 0 con 3aristas
+El camino mas corto desde 2 a 0 pasando por 4 aristas tiene peso 4
+No hay camino de 2 a 1 con 0aristas
+No hay camino de 2 a 1 con 1aristas
+El camino mas corto desde 2 a 1 pasando por 2 aristas tiene peso 2
+No hay camino de 2 a 1 con 3aristas
+No hay camino de 2 a 1 con 4aristas
+El camino mas corto desde 2 a 2 pasando por 0 aristas tiene peso 0
+No hay camino de 2 a 2 con 1aristas
+No hay camino de 2 a 2 con 2aristas
+El camino mas corto desde 2 a 2 pasando por 3 aristas tiene peso 3
+No hay camino de 2 a 2 con 4aristas
+No hay camino de 2 a 3 con 0aristas
+No hay camino de 2 a 3 con 1aristas
+El camino mas corto desde 2 a 3 pasando por 2 aristas tiene peso 2
+No hay camino de 2 a 3 con 3aristas
+No hay camino de 2 a 3 con 4aristas
+No hay camino de 2 a 4 con 0aristas
+No hay camino de 2 a 4 con 1aristas
+No hay camino de 2 a 4 con 2aristas
+El camino mas corto desde 2 a 4 pasando por 3 aristas tiene peso 3
+No hay camino de 2 a 4 con 4aristas
+No hay camino de 3 a 0 con 0aristas
+No hay camino de 3 a 0 con 1aristas
+No hay camino de 3 a 0 con 2aristas
+No hay camino de 3 a 0 con 3aristas
+No hay camino de 3 a 0 con 4aristas
+No hay camino de 3 a 1 con 0aristas
+No hay camino de 3 a 1 con 1aristas
+No hay camino de 3 a 1 con 2aristas
+No hay camino de 3 a 1 con 3aristas
+No hay camino de 3 a 1 con 4aristas
+No hay camino de 3 a 2 con 0aristas
+No hay camino de 3 a 2 con 1aristas
+No hay camino de 3 a 2 con 2aristas
+No hay camino de 3 a 2 con 3aristas
+No hay camino de 3 a 2 con 4aristas
+El camino mas corto desde 3 a 3 pasando por 0 aristas tiene peso 0
+No hay camino de 3 a 3 con 1aristas
+No hay camino de 3 a 3 con 2aristas
+No hay camino de 3 a 3 con 3aristas
+No hay camino de 3 a 3 con 4aristas
+No hay camino de 3 a 4 con 0aristas
+El camino mas corto desde 3 a 4 pasando por 1 aristas tiene peso 1
+No hay camino de 3 a 4 con 2aristas
+No hay camino de 3 a 4 con 3aristas
+No hay camino de 3 a 4 con 4aristas
+No hay camino de 4 a 0 con 0aristas
+No hay camino de 4 a 0 con 1aristas
+No hay camino de 4 a 0 con 2aristas
+No hay camino de 4 a 0 con 3aristas
+No hay camino de 4 a 0 con 4aristas
+No hay camino de 4 a 1 con 0aristas
+No hay camino de 4 a 1 con 1aristas
+No hay camino de 4 a 1 con 2aristas
+No hay camino de 4 a 1 con 3aristas
+No hay camino de 4 a 1 con 4aristas
+No hay camino de 4 a 2 con 0aristas
+No hay camino de 4 a 2 con 1aristas
+No hay camino de 4 a 2 con 2aristas
+No hay camino de 4 a 2 con 3aristas
+No hay camino de 4 a 2 con 4aristas
+No hay camino de 4 a 3 con 0aristas
+No hay camino de 4 a 3 con 1aristas
+No hay camino de 4 a 3 con 2aristas
+No hay camino de 4 a 3 con 3aristas
+No hay camino de 4 a 3 con 4aristas
+El camino mas corto desde 4 a 4 pasando por 0 aristas tiene peso 0
+No hay camino de 4 a 4 con 1aristas
+No hay camino de 4 a 4 con 2aristas
+No hay camino de 4 a 4 con 3aristas
+No hay camino de 4 a 4 con 4aristas
+
+ExpBin: 10
+No hay camino de 0 a 0 con 10aristas
+El camino mas corto desde 0 a 1 pasando por 10 aristas tiene peso 10
+No hay camino de 0 a 2 con 10aristas
+El camino mas corto desde 0 a 3 pasando por 10 aristas tiene peso 10
+No hay camino de 0 a 4 con 10aristas
+No hay camino de 1 a 0 con 10aristas
+No hay camino de 1 a 1 con 10aristas
+El camino mas corto desde 1 a 2 pasando por 10 aristas tiene peso 10
+No hay camino de 1 a 3 con 10aristas
+El camino mas corto desde 1 a 4 pasando por 10 aristas tiene peso 10
+El camino mas corto desde 2 a 0 pasando por 10 aristas tiene peso 10
+No hay camino de 2 a 1 con 10aristas
+No hay camino de 2 a 2 con 10aristas
+No hay camino de 2 a 3 con 10aristas
+No hay camino de 2 a 4 con 10aristas
+No hay camino de 3 a 0 con 10aristas
+No hay camino de 3 a 1 con 10aristas
+No hay camino de 3 a 2 con 10aristas
+No hay camino de 3 a 3 con 10aristas
+No hay camino de 3 a 4 con 10aristas
+No hay camino de 4 a 0 con 10aristas
+No hay camino de 4 a 1 con 10aristas
+No hay camino de 4 a 2 con 10aristas
+No hay camino de 4 a 3 con 10aristas
+No hay camino de 4 a 4 con 10aristas
 */
