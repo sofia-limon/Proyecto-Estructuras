@@ -4,7 +4,8 @@
 void startEdmonds(Graph& g);
 
 /*
-En esta funcion podemos encontrar la distancia entre dos nodos.
+Este algoritmo nos sirve para encontrar el emparejamiento maximo en un 
+grafo que no necesariamente es bipartito.
 
-La complejidad de BFS es de O(V+E).
+La complejidad de Edmonds es de O(V^3).
 */

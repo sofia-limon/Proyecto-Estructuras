@@ -4,7 +4,8 @@
 void startKuhn(Graph& g);
 
 /*
-En esta funcion podemos encontrar la distancia entre dos nodos.
+Este algoritmo nos sirve para encontrar el emparejamiento maximo en un 
+grafo bipartito.
 
-La complejidad de BFS es de O(V+E).
+La complejidad de Kuhn es de O(E√V).
 */
