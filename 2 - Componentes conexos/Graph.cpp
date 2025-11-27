@@ -1,4 +1,5 @@
 #include "Graph.h" 
+
 void Graph::init(){ 
     cout<<"Ingrese la cantidad de nodos y de aristas: "; 
     cin>>n>>m; 

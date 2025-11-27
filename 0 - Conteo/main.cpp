@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#include "Conjuntopotencia.h"
-#include "permutaciones.h"
-#include "Combinacion.h"
+#include "Conjunto potencia.h"
+#include "Permutaciones.h"
+#include "Combinaciones.h"
 
 using namespace std;
 

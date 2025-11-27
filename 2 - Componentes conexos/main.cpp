@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
-#include "Dijkstra.h"
-#include "Floyd.h"
-#include "DP.h"
-#include "Expbin.h"
+#include "Graph.h"
+#include "Recorrido.h"
+#include "Kosaraju.h"
+#include "DSU.h"
 
 using namespace std;
 
@@ -12,10 +12,9 @@ int main(){
     vector<string> menu = {
         "Salir",
         "Leer Grafo",
-        "Dijkstra",
-        "Floyd",
-        "Programacion Dinamica",
-        "Exponenciacion Binaria de Matrices"
+        "Kosaraju",
+        "DSU",
+        "Recorrido",
     };
 
     while(true){
@@ -29,10 +28,9 @@ int main(){
         switch(x){
             case 0: return 0;
             case 1: g.init(); break;
-            case 2: startDijkstra(g); break;
-            case 3: startFloyd(g); break;
-            case 4: startDP(g); break;
-            case 5: startExpBin(g); break;
+            case 2: startKosaraju(g); break;
+            case 3: startDSU(g); break;
+            case 4: startTraversal(g); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }

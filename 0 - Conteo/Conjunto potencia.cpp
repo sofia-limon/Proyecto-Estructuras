@@ -1,9 +1,12 @@
 #include <bits/stdc++.h>
-#include "Conjuntopotencia.h"
+#include "Conjunto potencia.h"
 
 using namespace std;
 
-void conjValores(long long& n){
+void conjValores(){
+    long long n;
+    cout<<"Ingresa el tamano del conjunto: ";
+    cin>>n;
 
     vector<char> v(n);
     cout<<"Ingrese los valores del conjunto: ";
@@ -17,7 +20,10 @@ void conjValores(long long& n){
     }   
 }
 
-void conjBinario(long long& n){
+void conjBinario(){
+    long long n;
+    cout<<"Ingresa el tamano del conjunto: ";
+    cin>>n;
     
     for(int i=0; i<(1<<n); i++){
         for(int h=0; h<n; h++){
@@ -27,15 +33,12 @@ void conjBinario(long long& n){
     }   
 }
 
-void conjPot(int x){
+void cardinalidad(){
     long long n;
     cout<<"Ingresa el tamano del conjunto: ";
     cin>>n;
-    
-    if(x==1)conjBinario(n);
-    else if(x==2) conjValores(n); 
-    else cout<<(expbin(2, n))<<'\n';
-    
+
+    cout<<(expbin(2, n))<<'\n';
 }
 
 void menuconjuntopotencia(){
@@ -56,9 +59,9 @@ void menuconjuntopotencia(){
 
         switch(x){
             case 0: return;
-            case 1: conjPot(x); break;
-            case 2: conjPot(x); break;
-            case 3: conjPot(x); break;
+            case 1: conjBinario(); break;
+            case 2: conjValores(); break;
+            case 3: cardinalidad(); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }

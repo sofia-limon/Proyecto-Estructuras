@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
-#include "Dijkstra.h"
-#include "Floyd.h"
-#include "DP.h"
-#include "Expbin.h"
+#include "Graph.h"
+#include "Representaciones.h"
 
 using namespace std;
 
@@ -11,11 +9,10 @@ Graph g;
 int main(){
     vector<string> menu = {
         "Salir",
-        "Leer Grafo",
-        "Dijkstra",
-        "Floyd",
-        "Programacion Dinamica",
-        "Exponenciacion Binaria de Matrices"
+        "Leer grafo",
+        "Mostrar matriz de incidencia",
+        "Mostrar lista de adyacencia",
+        "Mostrar matriz de adyacencia"
     };
 
     while(true){
@@ -29,10 +26,9 @@ int main(){
         switch(x){
             case 0: return 0;
             case 1: g.init(); break;
-            case 2: startDijkstra(g); break;
-            case 3: startFloyd(g); break;
-            case 4: startDP(g); break;
-            case 5: startExpBin(g); break;
+            case 2: imprimirlistadeadj(g); break;
+            case 3: imprimirmatrizdeadj(g); break;
+            case 4: imprimirmatrizdeincidencia(g); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }

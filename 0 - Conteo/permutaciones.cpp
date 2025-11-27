@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "permutaciones.h"
+#include "Permutaciones.h"
 
 using namespace std;
 
