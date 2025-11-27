@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "Combinacion.h"
+#include "Combinaciones.h"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ void combinacion(){
 
     vector<char> v(n);
 
-    cout<<"Ingresa los elementos del conjunto\n";
+    cout<<"Ingresa los elementos del conjunto: ";
 
     for(int i=0;i<n;i++){
         cin>>v[i];

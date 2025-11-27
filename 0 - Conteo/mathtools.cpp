@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "mathtools.h"
+#include "Mathtools.h"
 
 using namespace std;
 
