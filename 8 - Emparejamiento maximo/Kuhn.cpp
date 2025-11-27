@@ -30,7 +30,7 @@ void startKuhn(Graph& g){
     vector<bool> vis;
     vector<int> match(g.n,-1);
 
-    cout<<"El Grafo tiene "<<maxMatching(g, vis, match)<<" aristas en su emparejamiento maximo.\n";
+    cout<<"El Grafo tiene "<<maxMatching(g, vis, match)/2<<" aristas en su emparejamiento maximo.\n";
     cout<<"Para el algoritmo de Kuhn se determino este como el pareo:\n";
     
     for(int i=0; i<g.n; i++){
