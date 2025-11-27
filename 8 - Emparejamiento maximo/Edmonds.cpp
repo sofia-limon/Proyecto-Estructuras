@@ -3,56 +3,105 @@
 
 using namespace std;
 
-void backtracking(Graph& g, vector<bool>& vis, vector<int>& sh, vector<int>& ln, vector<int>& path, int& w, int& x, int& y){
-    vis[x]=1;
-    path.push_back(x);
 
-    if(x==y){
-        w++;
-        if(sh.empty() || sh.size()>path.size())sh=path;
-        if(ln.empty() || ln.size()<path.size())ln=path;
-        path.pop_back();
-        vis[x]=0;
-        return;
+
+int lca(vector<int>& base, vector<int>& match, vector<int>& p, int a, int b){
+    vector<bool> used_path(base.size(), false);
+    while(true){
+        a=base[a];
+        used_path[a]=true;
+        if(match[a]==-1)break;
+        a=p[match[a]];
     }
-    
-    vis[x]=1;
-    for(auto& u:g.adj[x]){
-        if(vis[u])continue;
-        backtracking(g, vis, sh, ln, path, w, u, y);
+    while(true){
+        b=base[b];
+        if(used_path[b])return b;
+        b=p[match[b]];
+    }
+}
+
+void markPath(vector<bool>& blossom, vector<int>& base, vector<int>& match, vector<int>& p, int v, int& b, int children){
+    while(base[v]!=b){
+        blossom[base[v]]=blossom[base[match[v]]]=true;
+        p[v]=children;
+        children=match[v];
+        v=p[match[v]];
+    }
+}
+
+int findPath(Graph& g, vector<bool>& blossom, vector<int>& match, int& root){
+    vector<bool> used(g.n, false);
+    vector<int> p(g.n, -1), base(g.n, 0);
+    int n=g.adj.size();
+    for(int i=0; i<n; i++)base[i]=i;
+
+    queue<int> q;
+    q.push(root);
+    used[root]=true;
+
+    while(!q.empty()){
+        auto x=q.front(); q.pop();
+
+        for(int u:g.adj[x]){
+            if(base[x]==base[u] || match[x]==u)continue;
+
+            if(u==root || (match[u]!=-1 && p[match[u]]!=-1)){
+                int b=lca(base, match, p, x, u);
+                blossom.assign(n, false);
+                markPath(blossom, base, match, p, x, b, u);
+                markPath(blossom, base, match, p, u, b, x);
+
+                for(int i=0;i<n;i++){
+                    if(!blossom[base[i]])continue;
+                    base[i]=b;
+                    if(!used[i])used[i]=true, q.push(i);
+                }
+            }
+            else if(p[u]==-1){
+                p[u]=x;
+                if(match[u]==-1){
+                    x=u;
+                    while(x!=-1){
+                        int pv = p[x];
+                        int nv = (pv == -1 ? -1 : match[pv]);
+                        match[x] = pv;
+                        if(pv != -1) match[pv] = x;
+                        x = nv;
+                    }
+                    return 1;
+                }
+                u = match[u];
+                used[u] = true;
+                q.push(u);
+            }
+        }
+    }
+    return 0;
+}
+
+int maxMatching(Graph &g, vector<int>& match){
+    vector<bool> blossom(g.n, false);
+    int res=0;
+
+    for(int i=0;i<g.n;i++){
+        if(match[i]==-1){
+            if(findPath(g, blossom, match, i))res++;
+        }
     }
 
-    path.pop_back();
-    vis[x]=0;
-    return;
+    return res;
 }
 
 void startEdmonds(Graph& g){
-    int root, to, ways=0;
-    cout<<"Ingresa el nodo en el que inicia la busqueda (Indexado a 0): ";
-    cin>>root;
-    cout<<"Ingresa el nodo objetivo (Indexado a 0): ";
-    cin>>to;
-
-    vector<bool> vis(g.n, 0);
-    vector<int> shortpath, longpath, path;
-
-    backtracking(g, vis, shortpath, longpath, path, ways, root, to);
-
-    if(!ways){
-        cout<<"No se puede alcanzar el nodo "<<to<<" desde el nodo "<<root<<".\n";
-        return;
-    }
-    cout<<"Hay "<<ways<<" maneras de ir desde "<<root<<" hasta "<<to<<".\n";
-    cout<<"El camino mas corto es:\n";
-    for(int i=0; i<shortpath.size(); i++)cout<<shortpath[i]<<((i!=shortpath.size()-1)?"->":".\n");
-    cout<<"El camino mas largo es:\n";
-    for(int i=0; i<longpath.size() ; i++)cout<<longpath[i] <<((i!=longpath.size() -1)?"->":".\n");
+    vector<int> match(g.n, -1);
+    
+    cout<<"El Grafo tiene "<<maxMatching(g, match)<<" aristas en su emparejamiento maximo.\n";
+    cout<<"Para el algoritmo de Edmonds se determino este como el pareo:\n";
     
     for(int i=0; i<g.n; i++){
-        if(!vis[i])continue;
-        cout<<i<<' ';
-    }cout<<'\n';
+        if(match[i]<i)continue;
+        cout<<i<<"<->"<<match[i]<<"\n";   
+    }
     
     return;
 }

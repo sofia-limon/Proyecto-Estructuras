@@ -1,7 +1,7 @@
 #pragma once
 #include "Graph.h"
 
-void startBFS(Graph& g);
+void startEdmonds(Graph& g);
 
 /*
 En esta funcion podemos encontrar la distancia entre dos nodos.
