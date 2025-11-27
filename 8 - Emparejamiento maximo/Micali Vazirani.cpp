@@ -309,7 +309,7 @@ void startMicali(Graph& g){
         }
     }
 
-    cout<<"El Grafo tiene "<<G.maxMatching()<<" aristas en su emparejamiento maximo.\n";
+    cout<<"El Grafo tiene "<<G.maxMatching()/2<<" aristas en su emparejamiento maximo.\n";
     cout<<"Para el algoritmo de Micali Vazirani se determino este como el pareo:\n";
     
     for(int i=0; i<g.n; i++){
