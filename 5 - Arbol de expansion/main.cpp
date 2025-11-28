@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
-#include "DFS.h"
-#include "BFS.h"
-#include "Backtracking.h"
-
+#include "Prim.h"
+#include "Kruskal.h"
 using namespace std;
 
 Graph g;
@@ -11,9 +9,8 @@ int main(){
     vector<string> menu = {
         "Salir",
         "Leer Grafo",
-        "DFS",
-        "BFS",
-        "Backtracking"
+        "Kruskal",
+        "Prim"
     };
 
     while(true){
@@ -27,9 +24,8 @@ int main(){
         switch(x){
             case 0: return 0;
             case 1: g.init(); break;
-            case 2: startDFS(g); break;
-            case 3: startBFS(g); break;
-            case 4: startBacktracking(g); break;
+            case 2: startKruskal(g); break;
+            case 3: startPrim(g); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }
@@ -37,86 +33,88 @@ int main(){
 
 /*
 # Grafo 1:
-7 10
-0 1
-0 2
-2 1
-2 4
-1 5
-5 0
-6 4
-1 0
-1 1
-0 1
+5 8
+0 1 1
+0 2 3
+0 3 3
+1 2 2
+1 4 3
+2 3 2
+2 4 1
+3 4 2
 
-DFS: 0 3
-No se puede alcanzar el nodo 3 desde el nodo 0.
-Los nodos alcanzados desde 0 son:
-0 1 2 4 5
-BFS: 5 1
-La distancia entre 5 y 1 es de 2
-La distancia de los nodos alcanzados desde 5 son:
-5->0=1
-5->1=2
-5->2=2
-5->4=3
-5->5=0
-Backtracking: 5 1
-Hay 3 maneras de ir desde 5 hasta 1.
-El camino mas corto es:
-5->0->1.
-El camino mas largo es:
-5->0->2->1.
+Kruskal:
+El peso del Arbol de Expansion Minima segun Kruskal es de 6
+Estos son los hijos del nodo 0:
+1 1, 2 2, 3 2.
+Estos son los hijos del nodo 1:
+El nodo 2 es una hoja.
+El nodo 3 es una hoja.
+El nodo 4 es una hoja.
+
+El peso del Arbol de Expansion Maxima segun Kruskal es de 11
+Estos son los hijos del nodo 0:
+2 3, 3 3.
+Estos son los hijos del nodo 1:
+4 3, 0 2.
+El nodo 2 es una hoja.
+El nodo 3 es una hoja.
+El nodo 4 es una hoja.
+
+Prim:
+El peso del Arbol de Expansion Minima segun Prim es de 6
+El peso del Arbol de Expansion Maxima segun Prim es de 11
+
 
 # Grafo 2:
-15 22
-0 3
-0 4
-1 0
-1 3
-1 14
-2 1
-2 10 
-2 12
-3 1
-3 4
-3 10
-4 5
-5 0
-8 10
-9 10
-10 7
-10 11
-10 12
-11 14
-12 13
-13 12
-14 2
+10 10
+0 1 2
+0 2 1
+0 3 3
+1 3 5
+2 3 4
+4 5 10
+6 7 6
+6 8 7
+6 9 8
+7 8 9
 
-DFS: 8 0
-Los nodos alcanzados desde 8 son:
-0 1 2 3 4 5 7 8 10 11 12 13 14
+Kruskal:
+El peso del Arbol de Expansion Minima segun Kruskal es de 37
+Estos son los hijos del nodo 0:
+2 1, 1 2, 3 3.
+Estos son los hijos del nodo 1:
+Estos son los hijos del nodo 2:
+El nodo 3 es una hoja.
+Estos son los hijos del nodo 4:
+5 10.
+El nodo 5 es una hoja.
+Estos son los hijos del nodo 6:
+7 6, 8 7, 9 8.
+Estos son los hijos del nodo 7:
+El nodo 8 es una hoja.
+El nodo 9 es una hoja.
 
-BFS: 10 6 
-No se puede alcanzar el nodo 6 desde el nodo 10.
-La distancia de los nodos alcanzados desde 10 son:
-10->0=5
-10->1=4
-10->2=3
-10->3=5
-10->4=6
-10->5=7
-10->7=1
-10->10=0
-10->11=1
-10->12=1
-10->13=2
-10->14=2
+El peso del Arbol de Expansion Maxima segun Kruskal es de 46
+Estos son los hijos del nodo 0:
+1 3.
+Estos son los hijos del nodo 1:
+3 5.
+Estos son los hijos del nodo 2:
+1 4.
+El nodo 3 es una hoja.
+Estos son los hijos del nodo 4:
+5 10.
+El nodo 5 es una hoja.
+Estos son los hijos del nodo 6:
+9 8, 7 7.
+Estos son los hijos del nodo 7:
+8 9.
+El nodo 8 es una hoja.
+El nodo 9 es una hoja.
 
-Backtracking: 0 13
-Hay 4 maneras de ir desde 0 hasta 13.
-El camino mas corto es:
-0->3->10->12->13.
-El camino mas largo es:
-0->3->1->14->2->10->12->13.
+Prim:
+El peso del Arbol de Expansion Minima segun Prim es de 37
+El peso del Arbol de Expansion Maxima segun Prim es de 46
+
 */

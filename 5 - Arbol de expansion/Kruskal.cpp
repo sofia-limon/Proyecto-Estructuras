@@ -61,8 +61,8 @@ void startKruskal(Graph& g){
     mx.kruskal(); mx.reverse();
 
 
-    cout<<"El peso del Arbol de Expansion Minima segun Kruskal es de "<<mn.peso;
-    for(int i=0; i<mn.g.n; i++){
+    cout<<"El peso del Arbol de Expansion Minima segun Kruskal es de "<<mn.peso<<"\n";
+    for(int i=0; i<mn.n; i++){
         if(mx.g.adj[i].empty()){
             cout<<"El nodo "<<i<<" es una hoja.\n";
             continue;
@@ -75,8 +75,8 @@ void startKruskal(Graph& g){
         }
     }cout<<"\n";
 
-    cout<<"El peso del Arbol de Expansion Maxima segun Kruskal es de "<<mx.peso;
-     for(int i=0; i<mx.g.n; i++){
+    cout<<"El peso del Arbol de Expansion Maxima segun Kruskal es de "<<mx.peso<<"\n";
+     for(int i=0; i<mx.n; i++){
         if(mx.g.adj[i].empty()){
             cout<<"El nodo "<<i<<" es una hoja.\n";
             continue;
