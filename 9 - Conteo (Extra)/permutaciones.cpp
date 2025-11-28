@@ -1,5 +1,5 @@
-#include <bits/stdc++.h>
 #include "Permutaciones.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -19,7 +19,7 @@ void backtrackingP(long long& n, long long& k, vector<bool>& vis, string& s, vec
     }
 }
 
-void permutacion(){
+void startPermut(){
     long long n, k;
     cout<<"Ingresa la cantidad de objetos en el conjunto: ";
     cin>>n;
@@ -28,13 +28,13 @@ void permutacion(){
 
     vector<char> v(n);
 
-    cout<<"Ingresa los elementos del conjunto\n";
+    cout<<"Ingresa los elementos del conjunto: \n";
 
     for(int i=0;i<n;i++){
         cin>>v[i];
     }
 
-    cout<<(factorial(n)*factorialr(k))%mod<<'\n';
+    cout<<"Hay "<<(factorial(n)*factorialr(k))%mod<<" Permutaciones."<<'\n';
 
     string s="";
     vector<bool> vis(n, 0);

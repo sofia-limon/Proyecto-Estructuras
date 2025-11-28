@@ -23,9 +23,9 @@ int main(){
 
         switch(x){
             case 0: return 0;
-            case 1: menuconjuntopotencia(); break;
-            case 2: combinacion(); break;
-            case 3: permutacion(); break;
+            case 1: startConjPot(); break;
+            case 2: startCombin(); break;
+            case 3: startPermut(); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }

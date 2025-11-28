@@ -1,5 +1,5 @@
-#include <bits/stdc++.h>
 #include "Combinaciones.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -16,7 +16,7 @@ void backtrackingC(long long& n, long long& k, int i, string& s, vector<char>& v
         }
 }
 
-void combinacion(){
+void startCombin(){
     long long n, k;
     cout<<"Ingresa la cantidad de objetos en el conjunto: ";
     cin>>n;
@@ -35,7 +35,7 @@ void combinacion(){
     ans = ans * factorialr(k) % mod;
     ans = ans * factorialr(n-k) % mod;
 
-    cout<<"N en K es: "<< ans << '\n';
+    cout<<"Hay"<<ans<<" Combinaciones.\n";
 
     string s="";
     vector<bool> vis(n, 0);
