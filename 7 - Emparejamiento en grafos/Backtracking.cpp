@@ -3,24 +3,35 @@
 
 using namespace std;
 
-int maxMatching(vector<pair<int, int>>& arist, long long& mask){
-    int n=arist.size();
+bool compare(pair<int, int>& x, pair<int, int>& y){
+    if(x.first==y.first)return false;
+    if(x.first==y.second)return false;
+    if(x.second==y.first)return false;
+    if(x.second==y.second)return false;
+    return true;
+}
 
-    for(long long i=0; i<(1ll<<n); i++){
+void backtracking(vector<pair<int, int>>& arist, vector<pair<int, int>>& best, vector<pair<int, int>>& curr, int i){
+    if(curr.size()>best.size())best=curr;
+
+    for(; i<arist.size(); i++){
         bool ok=1;
-
-        map<int, int> mp;
-
-        for(int h=0; h<n; h++){
-            if((i>>h)&1)mp[arist[h].first]++, mp[arist[h].second]++;
-        }
-
-        for(auto& [_, x]:mp)ok&=(x==1);
-
-        if(ok && __popcount(mask)<__popcount(i))mask=i;
+        for(auto& u:curr)ok&=compare(u, arist[i]);
+        if(!ok)continue;
+        curr.push_back(arist[i]);
+        backtracking(arist, best, curr, i+1);
+        curr.pop_back();
     }
 
-    return __popcount(mask);
+    return;
+}
+
+int maxMatching(vector<pair<int, int>>& arist, vector<pair<int, int>>& best){
+    vector<pair<int, int>> curr;
+
+    backtracking(arist, best, curr, 0);
+    
+    return best.size();
 }
 
 void startBacktracking(Graph &g){
@@ -28,19 +39,16 @@ void startBacktracking(Graph &g){
         cout<<"Valora tu computadora.\n";
         return;
     }
-    vector<pair<int, int>> arist;
-    long long mask=0;
+    vector<pair<int, int>> arist, best, curr;
 
     for(int i=0; i<g.n; i++){
         for(auto& u:g.adj[i])if(i<u)arist.push_back({i, u});
     }
 
-    cout<<"El Grafo tiene "<<maxMatching(arist, mask)<<" aristas en su emparejamiento maximo.\n";
-    cout<<"Para el algoritmo de Bitmask se determino este como el pareo:\n";
+    cout<<"El Grafo tiene "<<maxMatching(arist, best)<<" aristas en su emparejamiento maximo.\n";
+    cout<<"Para el algoritmo de Backtracking se determino este como el pareo:\n";
     
-    for(int h=0; h<arist.size(); h++){
-        if((mask>>h)&1)cout<<arist[h].first<<"<->"<<arist[h].second<<"\n"; 
-    }
+    for(auto& [x, y]:best)cout<<x<<"<->"<<y<<"\n";
     
     return;
 }
