@@ -1,4 +1,4 @@
 #pragma once
 #include "Mathtools.h"
 
-void combinacion();
+void startCombin();

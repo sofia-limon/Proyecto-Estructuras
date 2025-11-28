@@ -1,5 +1,5 @@
-#include <bits/stdc++.h>
 #include "Conjunto potencia.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -41,7 +41,7 @@ void cardinalidad(){
     cout<<(expbin(2, n))<<'\n';
 }
 
-void menuconjuntopotencia(){
+void startConjPot(){
     vector<string> menu = {
         "Regresar", 
         "Conjunto potencia en binario",
