@@ -1,81 +1,72 @@
-#include <bits/stdc++.h>
 #include "Representaciones.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
-void imprimirlistadeadj(const Graph& g){
-    cout << "Lista de adyacencia\n";
-    for (int u = 0; u < g.n; u++) {
-        cout << u << " -> ";
-        for (const Edge& e : g.adj[u]) {
-            cout << "(" << e.to << ", w=" << e.weight << ") ";
-        }
-        cout << "\n";
+void imprimirlistadeadj(Graph& g){
+    cout<<"Lista de adyacencia\n";
+    for(int u=0; u<g.n; u++){
+        cout<<u<<" -> ";
+        for(auto& e:g.adj[u]){
+            cout<<"("<<e.to<<", w="<<e.weight<<") ";
+        }cout<<"\n";
     }
 }
 
-void imprimirmatrizdeadj(const Graph& g) {
+void imprimirmatrizdeadj(Graph& g){
     vector<vector<long long>> mat(g.n, vector<long long>(g.n, 0));
 
-    for (int u = 0; u < g.n; u++) {
-        for (const Edge& e : g.adj[u]) {
-            mat[u][e.to] = e.weight;
+    for(int u=0; u<g.n; u++){
+        for(auto& e:g.adj[u]){
+            mat[u][e.to]=e.weight;
         }
     }
 
-    cout << "Matriz de adyacencia\n";
-    cout << "    ";
-    for (int j = 0; j < g.n; j++) {
-        cout << j << " ";
-    }
-    cout << "\n";
+    cout<<"Matriz de adyacencia\n";
+    cout<<"    ";
+    for(int j=0; j<g.n; j++)cout<<j<< " "; cout<<"\n";
 
-    for (int i = 0; i < g.n; i++) {
-        cout << i << " : ";
-        for (int j = 0; j < g.n; j++) {
-            cout << mat[i][j] << " ";
-        }
-        cout << "\n";
+    for(int i=0; i<g.n; i++){
+        cout<<i<<" : ";
+        for(int j=0; j<g.n; j++){
+            cout<<mat[i][j]<<" ";
+        }cout<<"\n";
     }
 }
 
-void imprimirmatrizdeincidencia(const Graph& g) {
+void imprimirmatrizdeincidencia(Graph& g) {
     vector<pair<int,int>> edges;
     edges.reserve(g.m);
 
-    for (int u = 0; u < g.n; u++) {
-        for (const Edge& e : g.adj[u]) {
+    for(int u=0; u<g.n; u++){
+        for(auto& e:g.adj[u]){
             edges.emplace_back(u, e.to);
         }
     }
 
-    int m = (int)edges.size();
+    int m=edges.size();
     vector<vector<int>> mat(g.n, vector<int>(m, 0));
 
-    for (int j = 0; j < m; j++) {
-        int u = edges[j].first;
-        int v = edges[j].second;
-        mat[u][j] = -1;
-        mat[v][j] = +1;
+    for(int j=0; j<m; j++){
+        int u=edges[j].first;
+        int v=edges[j].second;
+        mat[u][j]--;
+        mat[v][j]++;
     }
 
-    cout << "Matriz de incidencia\n";
-    if (m == 0) {
-        cout << "(No hay aristas)\n";
+    cout<<"Matriz de incidencia\n";
+    if(m==0){
+        cout<<"(No hay aristas)\n";
         return;
     }
 
-    cout << "      ";
-    for (int j = 0; j < m; j++) {
-        cout << "e" << j << " ";
-    }
-    cout << "\n";
+    cout<<"      ";
+    for(int j=0; j<m; j++)cout<<"e"<<j<<" "; cout<<"\n";
 
-    for (int i = 0; i < g.n; i++) {
-        cout << "v" << i << " : ";
-        for (int j = 0; j < m; j++) {
-            cout << mat[i][j] << " ";
-        }
-        cout << "\n";
+    for(int i=0; i<g.n; i++){
+        cout<<"v"<<i<<" : ";
+        for(int j=0; j<m; j++){
+            cout<<mat[i][j]<<" ";
+        }cout<<"\n";
     }
 }
