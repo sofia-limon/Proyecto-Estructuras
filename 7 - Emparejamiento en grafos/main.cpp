@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
-#include "Karp.h"
-#include "Kuhn.h"
-#include "Edmonds.h"
-#include "Micali Vazirani.h"
+#include "Greedy.h"
+#include "Bitmask.h"
+#include "Backtracking.h"
 
 using namespace std;
 
@@ -12,10 +11,9 @@ int main(){
     vector<string> menu = {
         "Salir",
         "Leer Grafo",
-        "Hopcroft-Karp",
-        "Kuhn",
-        "Edmonds",
-        "Micali Vazirani"
+        "Greedy",
+        "Bitmask",
+        "Backtracking"
     };
 
     while(true){
@@ -29,10 +27,9 @@ int main(){
         switch(x){
             case 0: return 0;
             case 1: g.init(); break;
-            case 2: startKarp(g); break;
-            case 3: startKuhn(g); break;
-            case 4: startEdmonds(g); break;
-            case 5: startMicali(g); break;
+            case 2: startGreedy(g); break;
+            case 3: startBitmask(g); break;
+            case 4: startBacktracking(g); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }
@@ -51,30 +48,23 @@ int main(){
 2 4
 2 5
 
-Karp:
-El Grafo tiene 3 aristas en su emparejamiento maximo.
-Para el algoritmo de Karp se determino este como el pareo:
+Greedy:
+Tamano del emparejamiento: 3
+Emparejamiento Greedy encontrado:
 0<->3
 1<->4
 2<->5
 
-Kuhn:
+Bitmask:
 El Grafo tiene 3 aristas en su emparejamiento maximo.
-Para el algoritmo de Kuhn se determino este como el pareo:
+Para el algoritmo de Bitmask se determino este como el pareo:
 0<->5
 1<->4
 2<->3
 
-Edmonds:
+Backtracking:
 El Grafo tiene 3 aristas en su emparejamiento maximo.
-Para el algoritmo de Edmonds se determino este como el pareo:
-0<->3
-1<->4
-2<->5
-
-Micali Vazirani:
-El Grafo tiene 6 aristas en su emparejamiento maximo.
-Para el algoritmo de Micali Vazirani se determino este como el pareo:
+Para el algoritmo de Backtracking se determino este como el pareo:
 0<->3
 1<->4
 2<->5
@@ -105,9 +95,9 @@ Para el algoritmo de Micali Vazirani se determino este como el pareo:
 17 18
 12 19
 
-Karp:
-El Grafo tiene 8 aristas en su emparejamiento maximo.
-Para el algoritmo de Karp se determino este como el pareo:
+Greedy:
+Tamano del emparejamiento: 8
+Emparejamiento Greedy encontrado:
 0<->1
 2<->3
 4<->5
@@ -117,31 +107,21 @@ Para el algoritmo de Karp se determino este como el pareo:
 14<->15
 16<->17
 
-Kuhn:
-El Grafo tiene 9 aristas en su emparejamiento maximo.
-Para el algoritmo de Kuhn se determino este como el pareo:
+Bitmask:
+El Grafo tiene 8 aristas en su emparejamiento maximo.
+Para el algoritmo de Bitmask se determino este como el pareo:
 0<->5
-6<->8
-9<->11
-12<->13
-14<->15
-16<->17
-
-Edmonds:
-El Grafo tiene 8 aristas en su emparejamiento maximo.
-Para el algoritmo de Edmonds se determino este como el pareo:
-0<->1
-2<->3
-4<->5
+1<->2
+3<->4
 6<->7
 9<->10
-12<->13
-14<->15
+12<->19
+13<->14
 16<->17
 
-Micali Vaziarni:
+Backtracking:
 El Grafo tiene 8 aristas en su emparejamiento maximo.
-Para el algoritmo de Micali Vazirani se determino este como el pareo:
+Para el algoritmo de Backtracking se determino este como el pareo:
 0<->1
 2<->3
 4<->5
