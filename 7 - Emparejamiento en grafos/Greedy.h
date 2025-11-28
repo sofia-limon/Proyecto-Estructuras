@@ -1,11 +1,10 @@
 #pragma once
 #include "Graph.h"
 
-void startKuhn(Graph& g);
+void startGreedy(Graph& g);
 
 /*
-Este algoritmo nos sirve para encontrar el emparejamiento maximo en un 
-grafo bipartito.
+Este algoritmo nos sirve para encontrar un emparejamiento en un grafo.
 
-La complejidad de Kuhn es de O(E√V).
+La complejidad de esta idea es de O(V+E).
 */
