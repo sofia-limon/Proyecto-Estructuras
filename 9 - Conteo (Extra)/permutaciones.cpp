@@ -19,7 +19,7 @@ void backtrackingP(long long& n, long long& k, vector<bool>& vis, string& s, vec
     }
 }
 
-void startPerm(){
+void startPermut(){
     long long n, k;
     cout<<"Ingresa la cantidad de objetos en el conjunto: ";
     cin>>n;
