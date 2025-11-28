@@ -10,9 +10,9 @@ int main(){
     vector<string> menu = {
         "Salir",
         "Leer grafo",
-        "Mostrar matriz de incidencia",
         "Mostrar lista de adyacencia",
-        "Mostrar matriz de adyacencia"
+        "Mostrar matriz de adyacencia",
+        "Mostrar matriz de incidencia"
     };
 
     while(true){
