@@ -11,5 +11,6 @@ void Graph::init(){
         cout<<"Ingresa la "<<i+1<<"-esima arista (indexado a 0): ";
         cin>>x>>y;
         adj[x].push_back(y);
+        adj[y].push_back(x);
     }
 }
