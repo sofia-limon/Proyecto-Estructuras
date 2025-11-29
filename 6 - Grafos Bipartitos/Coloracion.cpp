@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
-#include "Graph.h"
+#include "Coloracion.h"
 
 using namespace std;
 
-int bfsColor(const Graph& g, int x, vector<int>& color){    
+int bfsColor(Graph& g, int x, vector<int>& color){    
     queue<int> bfs;
     color[x] = 0;
     bfs.push(x);
@@ -13,8 +13,8 @@ int bfsColor(const Graph& g, int x, vector<int>& color){
         bfs.pop();
 
         for (int v : g.adj[u]) {
-            if (color[v] == -1) {
-                color[v] = color[u] ^ 1; 
+            if (color[v]==-1) {
+                color[v]=color[u]^1; 
                 bfs.push(v);
             } else if (color[v] == color[u]) {
                 return 0;
@@ -25,11 +25,11 @@ int bfsColor(const Graph& g, int x, vector<int>& color){
     return 1;
 }
 
-int esBipartito(const Graph& g){
+int esBipartito(Graph& g){
     int n = g.n;
     vector<int> color(n, -1);
 
-    for (int i = 0; i < n; i++) {
+    for (int i=0; i<n; i++) {
         if (color[i] == -1) {
             if (!bfsColor(g, i, color)) {
                 return 0;
@@ -39,14 +39,14 @@ int esBipartito(const Graph& g){
     return 1;
 }
 
-void startBiparticion(const Graph& g){
+void startBiparticion(Graph& g){
     int n = g.n;
     vector<int> color(n, -1);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i<n; i++) {
         if (color[i] == -1) {
             if (!bfsColor(g, i, color)) {
-                cout << "\nEl grafo no es bipartito.\n\n";
+                cout<<"\nEl grafo no es bipartito\n";
                 return;
             }
         }
@@ -54,17 +54,17 @@ void startBiparticion(const Graph& g){
 
     cout << "\nEl grafo es bipartito.\n";
 
-    vector<int> team1, team2;
+    vector<int> grupoA, grupoB;
     for (int v = 0; v < n; v++) {
-        if (color[v] == 0) team1.push_back(v);
-        else if (color[v] == 1) team2.push_back(v);
+        if (color[v] == 0) grupoA.push_back(v);
+        else if (color[v] == 1) grupoB.push_back(v);
     }
 
-    cout << "Lado 0: ";
-    for (auto& v : team1) cout << v << ' ';
-    cout << "\n";
+    cout << "El grupo A se compone de: \n";
+    for (auto& v : grupoA)cout<<v<<' ';
+    cout<<"\n";
 
-    cout << "Lado 1: ";
-    for (auto& v : team2) cout << v << ' ';
-    cout << "\n\n";
+    cout<<"El grupo B se compone de: \n";
+    for (auto& v : grupoB)cout<<v<<' ';
+    cout << "\n";
 }
