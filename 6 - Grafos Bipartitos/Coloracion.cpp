@@ -39,7 +39,7 @@ int esBipartito(Graph& g){
     return 1;
 }
 
-void startBiparticion(Graph& g){
+void startColoracion(Graph& g){
     int n = g.n;
     vector<int> color(n, -1);
 
