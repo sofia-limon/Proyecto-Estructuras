@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include "Graph.h"
-#include "Bipartito.h"
+#include "Coloracion.h"
+#include "Backtracking.h"
 
 using namespace std;
 
@@ -10,8 +11,8 @@ int main(){
     vector<string> menu = {
         "Salir",
         "Leer Grafo",
-        "Verificar si el grafo es bipartito",
-        "Mostrar biparticion (si es bipartito)",
+        "Verificar si el grafo es bipartito por coloracion",
+        "Verificar si el grafo es bipartito por backtracking"
     };
 
     while(true){
@@ -25,11 +26,9 @@ int main(){
         switch(x){
             case 0: return 0;
             case 1: g.init(); break;
-            case 2: esBipartito(g); break;
-            case 3: startBiparticion(g); break;
+            case 3: startColoracion(g); break;
+            case 4: startBacktracking(g); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }
 }
-
-
