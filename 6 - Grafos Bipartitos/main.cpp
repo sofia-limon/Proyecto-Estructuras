@@ -26,8 +26,8 @@ int main(){
         switch(x){
             case 0: return 0;
             case 1: g.init(); break;
-            case 3: startColoracion(g); break;
-            case 4: startBacktracking(g); break;
+            case 2: startColoracion(g); break;
+            case 3: startBacktracking(g); break;
             default: cout<<"Opcion no valida\n"; break;
         }
     }
