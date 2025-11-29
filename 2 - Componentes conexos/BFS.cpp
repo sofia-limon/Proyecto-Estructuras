@@ -1,41 +1,49 @@
+#include "BFS.h"
 #include <bits/stdc++.h>
-#include "Recorrido.h"
 
 using namespace std;
 
-void startTraversal(const Graph& g) {
-    vector<int> comp(g.n, -1);
-    int numComp = 0;
+vector<int> BFS(Graph& g, vector<bool>& vis, int& root){
+    vector<int> comp;
+    queue<int> q;
 
-    for (int start = 0; start < g.n; ++start) {
-        if (comp[start] != -1) continue;
+    q.push(root);
+    vis[root]=true;
 
-        numComp++;
-        queue<int> q;
-        q.push(start);
-        comp[start] = numComp;
+    while(!q.empty()){
+        auto x=q.front(); q.pop();
 
-        while (!q.empty()) {
-            int u = q.front(); q.pop();
-            for (const Edge& e : g.adj[u]) {
-                int v = e.to;
-                if (comp[v] == -1) {
-                    comp[v] = numComp;
-                    q.push(v);
-                }
-            }
+        comp.push_back(x);
+        for(auto& e:g.adj[x]){
+            if(vis[e.to])continue;
+            vis[e.to]=true;
+            q.push(e.to);
         }
     }
 
-    cout << "\nComponentes (por recorrido/BFS):\n";
-    cout << "Total de componentes: " << numComp << "\n\n";
+    return comp;
+}
 
-    for (int c = 1; c <= numComp; ++c) {
-        cout << "Componente " << c << ": ";
-        for (int v = 0; v < g.n; ++v) {
-            if (comp[v] == c) cout << v << " ";
-        }
-        cout << "\n";
+int getComponents(Graph& g, vector<vector<int>>& component){
+    vector<bool> vis(g.n, 0);
+    
+    for(int i=0; i<g.n; i++){
+        if(vis[i])continue;
+        component.push_back(BFS(g, vis, i));
     }
-    cout << "\n";
+    
+    return component.size();
+}
+
+void startBFS(Graph& g) {
+    vector<vector<int>> component(g.n);
+
+    cout<<"El Grafo tiene "<<getComponents(g, component)<<" Componentes.\n";
+    cout<<"Las componentes son: ";
+
+    for(auto& v:component){
+        if(v.empty())continue;
+        cout<<"{";
+        for(auto& u:v)cout<<u<<((u==v.back())?"}.\n":", ");
+    }
 }
