@@ -48,7 +48,7 @@ void startBacktracking(Graph& g){
     for(auto& u:GroupA)cout<<u<<((u==*GroupA.rbegin()?"}.\n":", "));
     
     cout<<"El grupo B se compone de:\n{";
-    for(auto& u:GroupA)cout<<u<<((u==*GroupA.rbegin()?"}.\n":", "));
+    for(auto& u:GroupB)cout<<u<<((u==*GroupB.rbegin()?"}.\n":", "));
 
     return;
 }
