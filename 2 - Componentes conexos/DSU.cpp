@@ -1,46 +1,50 @@
-#include <bits/stdc++.h>
 #include "DSU.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
-void startDSU(const Graph& g) {
-    int n = g.n;
+void DSU(vector<vector<int>>& component, vector<int>& id, int& X, int& Y){
+    int x=id[X], y=id[Y];
+    if(x==y)return;
 
-    vector<vector<int>> ans(n);
-    vector<int> p(n);
+    if(x>y)swap(x, y);
+    if(component[x].size()<component[y].size())swap(component[x], component[y]);
 
-    for (int i = 0; i < n; i++) {
-        p[i] = i;
-        ans[i].push_back(i);
-    }
+    for(auto& u:component[y]){
+        id[u]=x;
+        component[x].push_back(u);
+    }component[y].clear();
 
-    function<void(int, int)> DSU = [&](int X, int Y) {
-        int x = p[X], y = p[Y];
-        if (x == y) return;
+    return;
+}
 
-        if (x > y) swap(x, y);
-        if (ans[x].size() < ans[y].size()) swap(ans[x], ans[y]);
-
-        for (auto& u : ans[y]) {
-            p[u] = x;
-            ans[x].push_back(u);
-        }
-        ans[y].clear();
-    };
-
-    for (int i = 0; i < n; i++) {
-        for (const Edge& e : g.adj[i]) {
-            DSU(e.to, i);
+int getComponents(Graph& g, vector<vector<int>>& component){
+    vector<int> id(g.n);
+    for(int i=0; i<g.n;i++)id[i]=i, component[i].push_back(i);
+    
+    for(int i=0; i<g.n; i++){
+        for(auto& e:g.adj[i]){
+            DSU(component, id, e.to, i);
         }
     }
 
-    cout << "\nComponentes (DSU):\n";
+    int res=0;
+    for(auto& u:component)res+=(!u.empty());
 
-    for (auto& v : ans) {
-        if (v.empty()) continue;
-        for (auto& u : v) cout << u << ' ';
-        cout << "\n";
+    return res;
+}
+
+void startDSU(Graph& g){
+    vector<vector<int>> component(g.n);
+
+    cout<<"El Grafo tiene "<<getComponents(g, component)<<" Componentes.\n";
+    cout<<"Las componentes son: ";
+
+    for(auto& v:component){
+        if(v.empty())continue;
+        cout<<"{";
+        for(auto& u:v)cout<<u<<((u==v.back())?"}.\n":", ");
     }
 
-    cout << "\n";
+    return;
 }
