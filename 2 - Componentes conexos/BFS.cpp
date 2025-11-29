@@ -24,7 +24,7 @@ vector<int> BFS(Graph& g, vector<bool>& vis, int& root){
     return comp;
 }
 
-int getComponents(Graph& g, vector<vector<int>>& component){
+int GetComponents(Graph& g, vector<vector<int>>& component){
     vector<bool> vis(g.n, 0);
     
     for(int i=0; i<g.n; i++){
@@ -38,7 +38,7 @@ int getComponents(Graph& g, vector<vector<int>>& component){
 void startBFS(Graph& g) {
     vector<vector<int>> component(g.n);
 
-    cout<<"El Grafo tiene "<<getComponents(g, component)<<" Componentes.\n";
+    cout<<"El Grafo tiene "<<GetComponents(g, component)<<" Componentes.\n";
     cout<<"Las componentes son: ";
 
     for(auto& v:component){

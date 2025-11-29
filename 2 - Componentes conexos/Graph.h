@@ -4,7 +4,7 @@
 using namespace std;
 
 struct Edge{
-    long long weight;
+    long long weight=1;
     int to;
     bool operator<(const Edge& other){
         return weight<other.weight;
