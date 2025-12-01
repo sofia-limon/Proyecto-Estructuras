@@ -32,7 +32,7 @@ void startDP(Graph &g){
     for(int i=0; i<g.n; i++){
         for(int j=0; j<g.n; j++){
             for(int k=0; k<g.n; k++){
-                if(dp[k][i][j]==inf)cout<<"No hay camino de "<<i<<" a "<<j<<" con "<<k<<"aristas\n";
+                if(dp[k][i][j]==inf)cout<<"No hay camino de "<<i<<" a "<<j<<" con "<<k<<" aristas\n";
                 else cout<<"El camino mas corto desde "<<i<<" a "<<j<<" pasando por "<<k<<" aristas tiene peso "<<dp[k][i][j]<<"\n";
             }
         }
