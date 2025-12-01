@@ -47,7 +47,7 @@ void startExpBin(Graph &g){
 
     for(int i=0; i<g.n; i++){
         for(int j=0; j<g.n; j++){
-            if(mat[i][j]==inf)cout<<"No hay camino de "<<i<<" a "<<j<<" con "<<k<<"aristas\n";
+            if(mat[i][j]==inf)cout<<"No hay camino de "<<i<<" a "<<j<<" con "<<k<<" aristas\n";
             else cout<<"El camino mas corto desde "<<i<<" a "<<j<<" pasando por "<<k<<" aristas tiene peso "<<mat[i][j]<<"\n";
         }
     }
