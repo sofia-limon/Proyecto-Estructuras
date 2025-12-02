@@ -35,7 +35,7 @@ void startCombin(){
     ans = ans * factorialr(k) % mod;
     ans = ans * factorialr(n-k) % mod;
 
-    cout<<"Hay"<<ans<<" Combinaciones.\n";
+    cout<<"Hay "<<ans<<" Combinaciones.\n";
 
     string s="";
     vector<bool> vis(n, 0);
